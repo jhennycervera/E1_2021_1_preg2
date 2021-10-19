@@ -71,7 +71,7 @@ void cargadatos(void* &conductor, void*&falta) {
 
 void cargarConductores(void* &conductorGen) {
 
-    ifstream arch = abrirArchL("Conductores.csv");
+    ifstream arch("Conductores.csv", ios::in);
 
     void ** conductor, *buffCond[300], *regCond;
     int numCond = 0;
@@ -113,7 +113,7 @@ void * leerRegConductor(ifstream &arch) {
 }
 
 void cargarFaltas(void* &faltaGen) {
-    ifstream arch = abrirArchL("Infracciones.csv");
+    ifstream arch("Infracciones.csv", ios::in);
 
     void ** falta, *buffFalt[300], *regFalt;
     int numFalt = 0;
@@ -162,7 +162,7 @@ void* leerRegFaltas(ifstream &arch) {
 void registrafaltas(void *&consolidadoGen, void *conductor, void *falta) {
 
 
-    ifstream arch = abrirArchL("RegistroDeFaltas.csv");
+    ifstream arch("RegistroDeFaltas.csv", ios::in);
     void** consolidado, *buffCons[1000], *regCons;
 
     int rcodC, rInfr, rdd, rmm, raa, numCons = 0;
@@ -330,7 +330,7 @@ int compararLicFecha(void*consIGen, void* consJGen) {
 
 void imprimirReporte(void **consolidado) {
 
-    ofstream arch = abrirArchE("Reportepreg2.txt");
+    ofstream arch("Reportepreg2.txt", ios:: out);
     int codAnt=0;
     
     for (int i = 0; consolidado[i] != nullptr; i++) {
@@ -351,7 +351,6 @@ void imprimirReporte(void **consolidado) {
 
     }
 }
-
 void imprimirUnConsolidado(ofstream &arch, void* consoliGen) {
     void** regCons = (void**) consoliGen;
 
